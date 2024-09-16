@@ -1,0 +1,500 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+:root {
+    --bg-color: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --text-color: #ffffff;
+    --form-bg: rgba(255, 255, 255, 0.1);
+    --input-bg: rgba(255, 255, 255, 0.2);
+    --button-bg: #000000;
+    --button-hover: #333333;
+    --border-color: rgba(255, 255, 255, 0.3);
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    transition: all 0.3s ease;
+    overflow-x: hidden;
+}
+
+body.normal-mode::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(270deg, #667eea, #764ba2, #6B8DD6, #8E37D7);
+    background-size: 800% 800%;
+    animation: gradientAnimation 30s ease infinite;
+    z-index: -1;
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+nav {
+    position: sticky;
+    top: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    padding: 10px 0;
+    z-index: 1000;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.theme-toggle i,
+.nav-icon {
+    font-size: 1.5rem;
+    color: var(--text-color);
+    cursor: pointer;
+    margin: 0 10px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.theme-toggle i:hover,
+.nav-icon:hover {
+    color: #ddd;
+    transform: scale(1.1);
+}
+
+.container {
+    flex: 1;
+    width: 100%;
+    max-width: 500px;
+    margin: 60px auto;
+    padding: 0 20px;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h1 {
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+form {
+    background: var(--form-bg);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-color);
+    box-sizing: border-box;
+}
+
+.file-input,
+.password-input {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+input[type="file"],
+input[type="password"],
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+input[type="file"]:hover,
+input[type="password"]:hover,
+input[type="text"]:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.password-input {
+    position: relative;
+}
+
+#togglePassword {
+    position: absolute;
+    right: 10px;
+    top: 38px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: var(--text-color);
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+#togglePassword:hover {
+    opacity: 1;
+}
+
+button {
+    background-color: var(--button-bg);
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+button:hover {
+    background-color: var(--button-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+button i {
+    font-size: 1.2rem;
+}
+
+#result {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    text-align: center;
+    border: 1px solid var(--border-color);
+}
+
+.loader {
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #3498db;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+}
+
+.hidden {
+    display: none;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+footer {
+    background: rgba(0, 0, 0, 0.5);
+    color: var(--text-color);
+    text-align: center;
+    padding: 20px 0;
+    font-size: 0.9rem;
+    width: 100%;
+}
+
+@media (max-width: 600px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    form {
+        padding: 20px;
+    }
+
+    .nav-container {
+        justify-content: space-around;
+    }
+
+    .discord-icon {
+        order: 0;
+    }
+}
+
+body.light-mode {
+    --bg-color: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    --text-color: #333333;
+    --form-bg: rgba(255, 255, 255, 0.8);
+    --input-bg: rgba(0, 0, 0, 0.1);
+    --button-bg: #4CAF50;
+    --button-hover: #45a049;
+    --border-color: rgba(0, 0, 0, 0.2);
+}
+
+body.dark-mode {
+    --bg-color: linear-gradient(135deg, #2c3e50 0%, #1a1a1a 100%);
+    --text-color: #ffffff;
+    --form-bg: rgba(255, 255, 255, 0.1);
+    --input-bg: rgba(255, 255, 255, 0.2);
+    --button-bg: #3498db;
+    --button-hover: #2980b9;
+    --border-color: rgba(255, 255, 255, 0.2);
+}
+
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 20px;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: opacity 0.3s ease;
+    z-index: 1001;
+}
+
+.notification.error {
+    background-color: #ffae00;
+}
+
+.install-link {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: var(--button-bg);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.install-link:hover {
+    background-color: var(--button-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.file-input label,
+.password-input label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.file-input i,
+.password-input i {
+    font-size: 1.2rem;
+}
+
+input[type="file"],
+input[type="password"],
+input[type="text"] {
+    margin-top: 5px;
+}
+
+@keyframes iconRotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+#themeToggle {
+    animation: iconRotate 0.5s ease;
+}
+
+.file-button {
+    background-color: #000000;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    margin-top: 5px;
+}
+
+.file-button:hover {
+    background-color: #333333;
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    z-index: 1001;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.popup-content {
+    background-color: #2c3e50;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+    border-radius: 10px;
+    position: relative;
+    color: white;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#premiumStatus {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.purchase-button {
+    background-color: #4CAF50;
+    margin-top: 15px;
+}
+
+.purchase-button:hover {
+    background-color: #45a049;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.file-input {
+    display: flex;
+    flex-direction: column;
+}
+
+.file-button {
+    align-self: flex-start;
+}
+
+.discord-button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    background-color: #7289DA;
+    color: white;
+}
+
+.discord-button:hover {
+    background-color: #5e73bc;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-info img {
+    border-radius: 50%;
+}
+
+.premium-badge {
+    background-color: #FFD700;
+    color: #000;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--text-color);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    overflow: hidden;
+}
+
+.logo::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: 0.5s;
+}
+
+.logo:hover::before {
+    left: 100%;
+}
+
+@keyframes glowing {
+    0% {
+        text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff00de, 0 0 35px #ff00de, 0 0 40px #ff00de, 0 0 50px #ff00de, 0 0 75px #ff00de;
+    }
+
+    100% {
+        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff00de, 0 0 70px #ff00de, 0 0 80px #ff00de, 0 0 100px #ff00de, 0 0 150px #ff00de;
+    }
+}
+
+.logo {
+    animation: glowing 1.5s ease-in-out infinite alternate;
+}
