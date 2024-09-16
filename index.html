@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+        />
+        <title>Aurora Signer</title>
+        <link rel="stylesheet" href="styles.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        />
+    </head>
+    <body class="normal-mode">
+        <nav>
+            <div class="nav-container">
+                <div class="theme-toggle">
+                    <i class="fas fa-n" id="themeToggle"></i>
+                </div>
+                <a
+                    href="https://discord.gg/MneB2xjtGu"
+                    class="nav-icon discord-icon"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    ><i class="fab fa-discord"></i
+                ></a>
+                <a href="#" class="nav-icon" id="signInButton"
+                    ><i class="fas fa-sign-in"></i
+                ></a>
+            </div>
+        </nav>
+        <div class="container">
+            <h1>Aurora Signer</h1>
+            <form id="ASrequest" enctype="multipart/form-data">
+                <div class="file-input">
+                    <label for="p12"
+                        ><i class="fas fa-file-archive"></i> P12 File:</label
+                    >
+                    <input
+                        type="file"
+                        id="p12"
+                        name="p12"
+                        accept=".p12"
+                        required
+                    />
+                    <button type="button" class="file-button">
+                        Choose File
+                    </button>
+                </div>
+                <div class="file-input">
+                    <label for="mobileprovision"
+                        ><i class="fas fa-mobile-alt"></i> Mobile Provision
+                        File:</label
+                    >
+                    <input
+                        type="file"
+                        id="mobileprovision"
+                        name="mp"
+                        accept=".mobileprovision"
+                        required
+                    />
+                    <button type="button" class="file-button">
+                        Choose File
+                    </button>
+                </div>
+                <div class="file-input">
+                    <label for="ipa"
+                        ><i class="fas fa-file-archive"></i> IPA File:</label
+                    >
+                    <input
+                        type="file"
+                        id="ipa"
+                        name="ipa"
+                        accept=".ipa"
+                        required
+                    />
+                    <button type="button" class="file-button">
+                        Choose File
+                    </button>
+                </div>
+                <div class="password-input">
+                    <label for="password"
+                        ><i class="fas fa-lock"></i> P12 Password:</label
+                    >
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        required
+                    />
+                    <i class="fas fa-eye" id="togglePassword"></i>
+                </div>
+                <button type="submit">
+                    <i class="fas fa-sign-in-alt"></i> Sign IPA
+                </button>
+            </form>
+            <div id="result"></div>
+            <div id="loader" class="loader hidden"></div>
+        </div>
+
+        <footer>
+            <p>&copy; 2024 Aurora Signer. All rights reserved.</p>
+        </footer>
+
+        <div id="loginPopup" class="popup">
+            <div class="popup-content">
+                <span class="close">&times;</span>
+                <h2>Login / Sign Up</h2>
+                <div class="discord-login">
+                    <button id="DiscordLogin" class="discord-button">
+                        <i class="fab fa-discord"></i> Login with Discord
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="signedinPopup" class="popup">
+            <div class="popup-content">
+                <span class="close">&times;</span>
+                <h2>Signed in as <span id="username"></span></h2>
+                <div id="premiumStatus"></div>
+                <div class="purchase-tab">
+                    <button class="purchase-button">
+                        Buy AuroraSigner Premium
+                    </button>
+                </div>
+            </div>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>
